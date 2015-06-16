@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '~> 3.1.0'
 gem 'devise'
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

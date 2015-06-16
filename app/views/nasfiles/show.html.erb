@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @nasfile.file_name %>
+</p>
+
+<p>
+  <strong>File number:</strong>
+  <%= @nasfile.file_number %>
+</p>
+
+<p>
+  <strong>File sub:</strong>
+  <%= @nasfile.file_sub %>
+</p>
+
+<p>
+  <strong>File volume:</strong>
+  <%= @nasfile.file_vol %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @nasfile.category.name if @nasfile.category.present? %>
+</p>
+
+<p>
+  <strong>File description:</strong>
+  <%= @nasfile.file_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_nasfile_path(@nasfile) %> |
+<%= link_to 'Back', nasfiles_path %>

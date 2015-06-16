@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nasfile:</strong>
+  <%= @tracker.nasfile.file_name if @tracker.nasfile.present? %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @tracker.sender.office.name if @tracker.sender.present? %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @tracker.receiver_id %>
+</p>
+
+<%= link_to 'Edit', edit_tracker_path(@tracker) %> |
+<%= link_to 'Back', trackers_path %>

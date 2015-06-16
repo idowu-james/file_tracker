@@ -1,0 +1,23 @@
+<%= simple_form_for(@nasfile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :file_name %>
+
+    <%= f.input :file_number %>
+
+    <%= f.input :file_sub %>
+
+    <%= f.input :file_vol %>
+
+    <%= f.association :category %>
+
+    <%= f.input :file_description %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
+ *= require materialadmin
  */
+
+ .container {
+ 	padding-top: 60px;
+ }

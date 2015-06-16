@@ -1,0 +1,17 @@
+<%= simple_form_for(@tracker) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+	<%= f.label(:nasfile, "File Number") %>
+    <%= f.collection_select(:nasfile_id, Nasfile.all, :id, :file_number ) %><br>
+	
+  <%= f.label(:user,"Reciever") %>
+    <%= f.collection_select(:receiver_id, User.all_without([current_user]), :id, :username ) %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

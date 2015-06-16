@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Nasfiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>File number</th>
+      <th>File sub</th>
+      <th>File volume</th>
+      <th>Category</th>
+      <th>File description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nasfiles.each do |nasfile| %>
+      <tr>
+        <td><%= nasfile.file_name %></td>
+        <td><%= nasfile.file_number %></td>
+        <td><%= nasfile.file_sub %></td>
+        <td><%= nasfile.file_vol %></td>
+        <td><%= nasfile.category.name if nasfile.category.present?%></td>
+        <td><%= nasfile.file_description %></td>
+        <td><%= link_to 'Show', nasfile %></td>
+        <td><%= link_to 'Edit', edit_nasfile_path(nasfile) %></td>
+        <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nasfile', new_nasfile_path %>

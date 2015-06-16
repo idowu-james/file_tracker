@@ -24,7 +24,8 @@
         <td><%= nasfile.file_vol %></td>
         <td><%= nasfile.category.name if nasfile.category.present?%></td>
         <td><%= nasfile.file_description %></td>
-        <td><%= link_to 'Show', nasfile %></td>
+        <td><%= link_to 'Show', @nasfile %></td>
+        <td><%= link_to 'File Movement', nasfile_trackers_path(nasfile) %></td>
         <td><%= link_to 'Edit', edit_nasfile_path(nasfile) %></td>
         <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

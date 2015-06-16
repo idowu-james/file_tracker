@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-resources :nasfiles
+resources :nasfiles do
+  resources :trackers
+end
   resources :offices
   resources :departments
   devise_for :admins
@@ -12,7 +14,7 @@ resources :nasfiles
     resources :users , only: [:index, :new, :create, :show ,:delete,:destroy]
   end
   resources :categories , except: [:show]
-  resources :trackers
+  #resources :trackers
 
   root 'nasfiles#index'
 end

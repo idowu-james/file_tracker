@@ -1,10 +1,12 @@
 class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
+  before_action :file_movement
 
   # GET /trackers
   # GET /trackers.json
   def index
-    @trackers = Tracker.all
+    #@trackers = Tracker.where(:nasfile_id => nasfile.id)
+    @trackers = @nasfile.trackers
   end
 
   # GET /trackers/1
@@ -72,5 +74,11 @@ class TrackersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
       params.require(:tracker).permit(:nasfile_id, :sender_id, :receiver_id)
+    end
+
+    def file_movement
+      if params[:nasfile_id]
+        @nasfile = Nasfile.find(params[:nasfile_id])
+      end
     end
 end

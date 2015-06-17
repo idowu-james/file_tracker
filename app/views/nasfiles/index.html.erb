@@ -11,6 +11,7 @@
       <th>File volume</th>
       <th>Category</th>
       <th>File description</th>
+      <th>Current Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,13 @@
         <td><%= nasfile.file_vol %></td>
         <td><%= nasfile.category.name if nasfile.category.present?%></td>
         <td><%= nasfile.file_description %></td>
+        <td>
+          <% if nasfile.trackers.empty? %>
+            No File Movement Yet!!!
+          <% else %>
+            <%= nasfile.trackers.last.office_receiving.name %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', @nasfile %></td>
         <td><%= link_to 'File Movement', nasfile_trackers_path(nasfile) %></td>
         <td><%= link_to 'Edit', edit_nasfile_path(nasfile) %></td>

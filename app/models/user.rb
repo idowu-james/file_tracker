@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :office
 
   has_many :sent_files,:class_name => 'Tracker', :foreign_key => 'sender_id'
-  has_many :received_files,:class_name => 'Tracker', :foreign_key => 'recepient_id'
+  has_many :received_files,:class_name => 'Tracker', :foreign_key => 'receiver_id'
 
   def email_required?
     false

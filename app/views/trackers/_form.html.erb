@@ -1,4 +1,4 @@
-<%= simple_form_for(@tracker) do |f| %>
+<%= simple_form_for([@tracker.nasfile , @tracker]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,6 +8,8 @@
 	
   <%= f.label(:user,"Reciever") %>
     <%= f.collection_select(:receiver_id, User.all_without([current_user]), :id, :username ) %>
+
+
 
   </div>
 

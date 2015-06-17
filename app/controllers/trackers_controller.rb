@@ -16,7 +16,9 @@ class TrackersController < ApplicationController
 
   # GET /trackers/new
   def new
-    @tracker = Tracker.new
+    #@tracker = @nasfile.trackers.build
+    @tracker = Tracker.new({:nasfile_id => @nasfile.id})
+
   end
 
   # GET /trackers/1/edit
@@ -26,14 +28,14 @@ class TrackersController < ApplicationController
   # POST /trackers
   # POST /trackers.json
   def create
-    @tracker = Tracker.new(tracker_params)
+    @tracker = @nasfile.trackers.create(tracker_params)
 
     @tracker.sender_id = current_user.id
-    @tracker.office_sent_to_id = @tracker.receiver.office.name
+    #@tracker.office_sent_to_id = @tracker.receiver.office.name
     respond_to do |format|
       if @tracker.save
-        format.html { redirect_to @tracker, notice: 'Tracker was successfully created.' }
-        format.json { render :show, status: :created, location: @tracker }
+        format.html { redirect_to nasfile_trackers_path(@nasfile), notice: 'Tracker was successfully created.' }
+        format.json { render @tracker, status: :created, location: @tracker }
       else
         format.html { render :new }
         format.json { render json: @tracker.errors, status: :unprocessable_entity }
@@ -73,7 +75,7 @@ class TrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
-      params.require(:tracker).permit(:nasfile_id, :sender_id, :receiver_id)
+      params.require(:tracker).permit(:nasfile_id, :sender_id, :receiver_id,:office_sent_to_id)
     end
 
     def file_movement

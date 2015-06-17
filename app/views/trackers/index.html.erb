@@ -1,34 +1,38 @@
 <p id="notice"><%= notice %></p>
+<% if @nasfile.trackers.empty? %>
+  <h3><%= 'No Movement For File %{nasfile.file_name}Yet' %></h3>
+<% else %>
+  <h1>Listing Trackers</h1>
 
-<h1>Listing Trackers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nasfile</th>
-      <th>Sender</th>
-      <th>Office Sent From</th>
-      <th>Receiver</th>
-      <th>Current Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trackers.each do |tracker| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= tracker.nasfile.file_name if tracker.nasfile.present? %></td>
-        <td><%= tracker.sender.username if tracker.sender.present? %></td>
-        <td><%= tracker.sender.office.name if tracker.sender.present? %></td>
-
-        <td><%= tracker.receiver.username if tracker.receiver.present? %></td>
-        <td><%= tracker.receiver.office.name if tracker.receiver.present? %></td>
-
-        
+        <th>File Number</th>
+        <th>Sender</th>
+        <th>Office Sent From</th>
+        <th>Receiver</th>
+        <th>Current Location</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @trackers.each do |tracker| %>
+        <tr>
+          <td><%= tracker.nasfile.file_number if tracker.nasfile.present? %></td>
+          <td><%= tracker.sender.username if tracker.sender.present? %></td>
+          <td><%= tracker.sender.office.name if tracker.sender.present? %></td>
+
+          <td><%= tracker.receiver.username if tracker.receiver.present? %></td>
+          <td><%= tracker.office_receiving.name if tracker.office_receiving.present? %></td>
+
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <br>
 
+<%= link_to "Back To files", nasfiles_path %>
+<%= link_to "New Move File", new_nasfile_tracker_path(@nasfile) %>

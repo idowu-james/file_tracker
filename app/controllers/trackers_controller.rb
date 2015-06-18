@@ -6,7 +6,7 @@ class TrackersController < ApplicationController
   # GET /trackers.json
   def index
     #@trackers = Tracker.where(:nasfile_id => nasfile.id)
-    @trackers = @nasfile.trackers
+    @trackers = @nasfile.trackers.newest_first
   end
 
   # GET /trackers/1

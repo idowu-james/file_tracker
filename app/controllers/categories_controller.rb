@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 	before_action :set_categories , only: [:edit, :update, :delete, :destroy]
-	before_action :reg_officer_admin, only:[:index]
+	before_action :reg_officer_admin, only: [:index]
 	before_action :admin, except: [:index]
   def index
   	@categories = Category.sorted

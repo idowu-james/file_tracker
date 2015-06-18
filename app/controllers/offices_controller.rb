@@ -1,5 +1,6 @@
 class OfficesController < ApplicationController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
+  before_action :registry_officer
 
   # GET /offices
   # GET /offices.json

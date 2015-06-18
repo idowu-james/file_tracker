@@ -1,17 +1,22 @@
 class NasfilesController < ApplicationController
   before_action :set_nasfile, only: [:show, :edit, :update, :destroy]
+  before_action :registry_officer, only: [:new, :create, :edit, :destroy]
 
   # GET /nasfiles
   # GET /nasfiles.json
   def index
     #@user = User.find(receiver.id)
-    @nasfiles = Nasfile.all
+    if current_user.registry_officer?
+      @nasfiles = Nasfile.all
+    else
+      @nasfiles = Nasfile.where("office_id = ?", current_user.office_id)
+    end
   end
 
   # GET /nasfiles/1
   # GET /nasfiles/1.json
   def show
-    @nasfile = Nasfile.find(params[:id])
+    #@nasfile = Nasfile.find(params[:id])
   end
 
   # GET /nasfiles/new
@@ -71,6 +76,6 @@ class NasfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nasfile_params
-      params.require(:nasfile).permit(:file_name, :file_number, :file_sub, :file_volume, :category_id, :file_description)
+      params.require(:nasfile).permit(:file_name, :file_number, :file_sub, :file_volume, :category_id, :file_description, :office_id)
     end
 end

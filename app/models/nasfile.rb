@@ -1,5 +1,6 @@
 class Nasfile < ActiveRecord::Base
   belongs_to :category
+  belongs_to :office
   has_many :trackers, dependent: :destroy
   has_many :received_files,:class_name => 'Tracker', :foreign_key => 'office_sent_to_id'
   has_many :offices, :through => :received_files
@@ -13,5 +14,9 @@ class Nasfile < ActiveRecord::Base
 		else
 			self.file_number = self.file_number
 		end
+	end
+
+	def self.all_without_office(included)
+	    where("office_id IN (?)", included)
 	end
 end

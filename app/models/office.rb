@@ -1,5 +1,6 @@
 class Office < ActiveRecord::Base
   belongs_to :department
+  has_many :nasfiles
 
   has_many :users
   #has_many :trackers, :through => :users

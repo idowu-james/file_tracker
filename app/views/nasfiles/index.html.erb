@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Nasfiles</h1>
+<% if current_user.registry_officer? %>
+  <h1>Listing All Files</h1>
+<% else %>
+  <h1>Listing Files In <%= current_user.office.name %></h1>
+<% end %>
 
 <table>
   <thead>
@@ -32,10 +35,10 @@
             <%= nasfile.trackers.last.office_receiving.name %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', @nasfile %></td>
+        <td><%= link_to 'Show', nasfile %></td>
         <td><%= link_to 'File Movement', nasfile_trackers_path(nasfile) %></td>
         <td><%= link_to 'Edit', edit_nasfile_path(nasfile) %></td>
-        <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } if current_user.registry_officer? %></td>
       </tr>
     <% end %>
   </tbody>

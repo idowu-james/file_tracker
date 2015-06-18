@@ -21,7 +21,7 @@
         <tr>
           <td><%= tracker.nasfile.file_number if tracker.nasfile.present? %></td>
           <td><%= tracker.sender.username if tracker.sender.present? %></td>
-          <td><%= tracker.sender.office.name if tracker.sender.present? %></td>
+          <td><%= tracker.office_sending.name if tracker.office_sending.present? %></td>
 
           <td><%= tracker.receiver.username if tracker.receiver.present? %></td>
           <td><%= tracker.office_receiving.name if tracker.office_receiving.present? %></td>

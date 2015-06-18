@@ -4,6 +4,7 @@ class NasfilesController < ApplicationController
   # GET /nasfiles
   # GET /nasfiles.json
   def index
+    #@user = User.find(receiver.id)
     @nasfiles = Nasfile.all
   end
 

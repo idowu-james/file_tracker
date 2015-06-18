@@ -31,6 +31,8 @@ class TrackersController < ApplicationController
     @tracker = @nasfile.trackers.create(tracker_params)
 
     @tracker.sender_id = current_user.id
+    @tracker.office_sent_from_id = current_user.office.id
+
     #@tracker.office_sent_to_id = @tracker.receiver.office.name
     respond_to do |format|
       if @tracker.save
@@ -75,7 +77,7 @@ class TrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
-      params.require(:tracker).permit(:nasfile_id, :sender_id, :receiver_id,:office_sent_to_id)
+      params.require(:tracker).permit(:nasfile_id, :sender_id, :receiver_id,:office_sent_to_id,:office_sent_from_id)
     end
 
     def file_movement

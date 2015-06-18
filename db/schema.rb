@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615124102) do
+ActiveRecord::Schema.define(version: 20150617002224) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "username",           limit: 255,              null: false
@@ -60,12 +60,13 @@ ActiveRecord::Schema.define(version: 20150615124102) do
   add_index "offices", ["department_id"], name: "index_offices_on_department_id", using: :btree
 
   create_table "trackers", force: :cascade do |t|
-    t.integer  "nasfile_id",        limit: 4
-    t.integer  "sender_id",         limit: 4
-    t.integer  "receiver_id",       limit: 4
-    t.integer  "office_sent_to_id", limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "nasfile_id",          limit: 4
+    t.integer  "office_sent_from_id", limit: 4
+    t.integer  "sender_id",           limit: 4
+    t.integer  "receiver_id",         limit: 4
+    t.integer  "office_sent_to_id",   limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "trackers", ["nasfile_id"], name: "index_trackers_on_nasfile_id", using: :btree

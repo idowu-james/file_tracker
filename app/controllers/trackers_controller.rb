@@ -6,7 +6,7 @@ class TrackersController < ApplicationController
   # GET /trackers.json
   def index
     #@trackers = Tracker.where(:nasfile_id => nasfile.id)
-    @trackers = @nasfile.trackers.newest_first
+    @trackers = @nasfile.trackers.newest_first.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /trackers/1

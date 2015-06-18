@@ -7,9 +7,9 @@ class NasfilesController < ApplicationController
   def index
     #@user = User.find(receiver.id)
     if current_user.registry_officer?
-      @nasfiles = Nasfile.all
+      @nasfiles = Nasfile.all.paginate(:page => params[:page], :per_page => 30)
     else
-      @nasfiles = Nasfile.where("office_id = ?", current_user.office_id)
+      @nasfiles = Nasfile.where("office_id = ?", current_user.office_id).paginate(:page => params[:page], :per_page => 10)
     end
   end
 

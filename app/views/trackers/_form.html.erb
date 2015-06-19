@@ -3,11 +3,13 @@
 
   <div class="form-inputs">
 
-	<%= f.label(:nasfile, "File Number") %>
-    <%= f.collection_select(:nasfile_id, Nasfile.all_without_office([current_user.office_id]), :id, :file_number ) %><br>
+	
+  <%= f.input :nasfile, disabled: true, label: 'File Number', input_html: { value: @nasfile.file_number } %>
+    
 	
   <%= f.label(:user,"Reciever") %>
-    <%= f.collection_select(:receiver_id, User.all_without([current_user]), :id, :username ) %>
+    <%= f.collection_select(:receiver_id, User.all_without([current_user]), :id, :username,
+    :prompt => 'Please select Receiving User' ) %>
 
 
 

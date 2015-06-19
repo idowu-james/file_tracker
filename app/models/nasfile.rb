@@ -16,7 +16,7 @@ class Nasfile < ActiveRecord::Base
 		end
 	end
 
-	def self.all_without_office(included)
+	def self.all_files_in_office(included)
 	    where("office_id IN (?)", included)
 	end
 end

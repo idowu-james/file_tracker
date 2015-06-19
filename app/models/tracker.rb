@@ -30,7 +30,7 @@ def set_nasfile_office_id
     where("id NOT IN (?)", excluded)
   end
 
-  def self.all_without_office(excluded)
-      where("id NOT IN (?)", excluded)
-  end
+  # def self.all_without_office(excluded)
+  #     where("id NOT IN (?)", excluded)
+  # end
 end

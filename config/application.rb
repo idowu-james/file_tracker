@@ -25,5 +25,9 @@ module FileTracker
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w(.svg .eot .woff .ttf)
 
+    config.to_prepare do
+        Devise::SessionsController.layout proc{ |controller| action_name == 'new' ? "login"   : "application" }
+    end
+
   end
 end

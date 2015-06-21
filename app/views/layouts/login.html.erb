@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FileTracker</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="menubar-hoverable header-fixed ">
+	<% if flash[:alert] %>
+		<div class="alert alert-error">
+			<%=flash[:alert]%>
+		</div>	
+	<% end %>
+	<!-- Gritter -->
+	<%= js extend_gritter :position => "top_right", :fade_in_speed => "medium", :fade_out_speed => 1000, :time => 2000, :class_name => "gritter-light"  %>
+	<% if flash[:notice] %>
+	  <%= js add_gritter(flash[:notice], :nodom_wrap  => true ) %>   
+	<% elsif flash[:error] %>
+	 <%= js add_gritter(flash[:error], :title => "Error", :nodom_wrap  => true) %>
+	<% end %>
+	<!-- Gritter -->
+
+	<!-- BEGIN LOGIN SECTION -->
+	<section class="section-account">
+		<div class="spacer"></div>
+			<div class="card contain-sm">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<br/>													
+							<%= yield %>															
+						</div>
+						<div class="col-sm-5 col-sm-offset-1 text-center">
+							<br>
+							<h2>NASENI</h2>                         
+                   			<h3><strong>FILE TRACKING SYSTEM</strong></h3>
+	                    	<%= image_tag "media6.png", :class => "img-circle border-white border-xl img-responsive auto-width" %>
+							<%= link_to "Admin Login", new_admin_session_path, :class => "btn btn-block ink-reaction btn-flat btn-default" %>
+							<br><br>
+						</div><!--end .col -->
+					</div>
+				</div>
+			</div>								
+	</section>
+
+</body>
+</html>

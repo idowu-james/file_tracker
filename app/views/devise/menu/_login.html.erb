@@ -1,9 +1,19 @@
 <% if user_signed_in? %>
-	<li>
-	 Welcome <%= current_user.last_name %>|<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-	</li>
-<% else %>
-	<li>
-		<%= link_to "Log In", new_user_session_path %>
-	</li>
+	<ul class="header-nav header-nav-profile">
+		<li class="dropdown">
+			<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+			<span class="profile-info">
+				Welcome <%= current_user.username %>
+				<small><%= current_user.registry_officer ? 'Registry Officer' : 'Officer' %> | <%= current_user.office.name %></small>
+			</span>
+			</a>
+			<ul class="dropdown-menu animation-dock">
+				<li class="dropdown-header">Config</li>
+				<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+				<li class="divider"></li>
+				<li><a href="../../html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
+				<li><%= link_to '<i class="fa fa-fw fa-power-off text-danger"></i> Log Out'.html_safe,  destroy_user_session_path, :method => :delete %></li>
+			</ul><!--end .dropdown-menu -->
+		</li><!--end .dropdown -->
+	</ul><!--end .header-nav-profile -->
 <% end %>

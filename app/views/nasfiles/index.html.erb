@@ -35,15 +35,18 @@
             <%= nasfile.trackers.last.office_receiving.name %>
           <% end %>
         </td>
+      <div class="meta">
         <td><%= link_to 'Show', nasfile %></td>
         <td><%= link_to 'File Movement', nasfile_trackers_path(nasfile) %></td>
         <td><%= link_to 'Edit', edit_nasfile_path(nasfile) %></td>
-        <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } if current_user.registry_officer? %></td>
+        <td><%= link_to 'Destroy', nasfile, method: :delete, data: { confirm: 'Are you sure?' } if current_user.registry_officer? %>
+        </td>
         <td>
           <% if nasfile.office.name.downcase != 'registry' %>
-          <em>Moved to <%= nasfile.office.name %> <%= time_ago_in_words(nasfile.trackers.last.created_at) %> ago</em>
+          <em>Moved from <%= nasfile.trackers.last.office_sending.name + " to " + nasfile.office.name + " "+time_ago_in_words(nasfile.trackers.last.created_at) + " ago" %></em>
           <% end %>
         </td>
+      </div>
       </tr>
     <% end %>
   </tbody>

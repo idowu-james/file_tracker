@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '~> 3.1.0'
 gem 'devise'
 gem 'will_paginate', '~> 3.0.6'
+gem "gritter", "1.1.0"
 
 
 group :development, :test do

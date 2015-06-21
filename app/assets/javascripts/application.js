@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require npm
+//= require gritter
 //= require_tree .

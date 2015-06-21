@@ -19,4 +19,8 @@ class Nasfile < ActiveRecord::Base
 	def self.all_files_in_office(included)
 	    where("office_id IN (?)", included)
 	end
+
+	def self.last_leaving_office(included)
+	    where("office_sending.name.downcase = ?", included)
+	end
 end
